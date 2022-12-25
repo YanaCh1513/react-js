@@ -2,3 +2,61 @@
   margin: 0 auto;
   width: 70%;
 }
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+}
+
+.messageBox {
+  background-color: aqua;
+  flex-grow: 1;
+}
+
+.post {
+  background-color: rgba(0, 0, 20, 0.05);
+  padding: 0.6em;
+  margin: 0.2em;
+  display: flex;
+}
+
+.post .author,
+.post .message {
+  padding: 0.2em;
+}
+
+.post__left {
+  flex-direction: row;
+}
+
+.post__right {
+  flex-direction: row-reverse;
+}
+
+.author {
+  background-color: coral;
+  color: white;
+}
+
+.message {
+  background-color: rgba(0, 0, 20, 0.05);
+}
+
+.inputForm {
+  flex-basis: 2em;
+  background-color: aquamarine;
+  display: flex;
+  padding: 0.3em;
+}
+
+.newMessage {
+  border-style: none;
+  -webkit-appearance: none;
+  flex-grow: 1;
+  padding: 0.5em;
+  background-color: rgba(0, 0, 20, 0.2);
+}

@@ -1,0 +1,21 @@
+.inputForm {
+  flex-basis: 2em;
+  background-color: aquamarine;
+  display: flex;
+  padding: 0.3em;
+  font-size: 16px;
+}
+
+.addBtn {
+  /* padding-left: 1em;
+     padding-right: 1em; */
+}
+
+.newMessage {
+  font: inherit;
+  border-style: none;
+  -webkit-appearance: none;
+  flex-grow: 1;
+  padding: 0.5em;
+  background-color: rgba(0, 0, 20, 0.2);
+}

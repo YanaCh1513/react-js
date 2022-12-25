@@ -1,7 +1,27 @@
+
+.post
+    border-radius: 3px
+    background-color: rgba(0, 0, 20, 0.1)
+    padding: 0.6em
+    margin: 0.2em
+    display: flex
+    font-size: 16px //don't know how to setup this globally using modules css
+
+.post .author,
+.post .message
+    padding: 0.2em
+
+.post__left
+    flex-direction: row
+
+.post__right
+    flex-direction: row-reverse
+
+.author
+    background-color: rgba(255, 127, 80, 1)
+    color: white
+    border-radius: inherit
+
 .message
-    background-color: bisque
-    border-radius: 15px
-    border-style: solid
-    border-color: brown
-    padding: 10px
-    color: maroon
+    background-color: rgba(0, 0, 20, 0.05)
+    border-radius: inherit
