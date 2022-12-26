@@ -32,7 +32,7 @@ export function App() {
 
   const addBotMessage = (timerId) => {
     console.log('addBotMessage() interval: ' + timerId)
-    clearInterval(timerId)
+    //    clearInterval(timerId)
 
     if (messageList.length === 0) setMeesageList([...messageList, { id: 0, author: botName, text: botMessage }])
     else if (messageList[messageList.length - 1].author != botName) {
@@ -49,10 +49,10 @@ export function App() {
 
     console.log('create interval: ' + id)
 
-    // return () => {
-    //   console.log('release interval: ' + id)
-    //   clearInterval(id)
-    // }
+    return () => {
+      console.log('release interval: ' + id)
+      clearInterval(id)
+    }
   }, [messageList])
 
 

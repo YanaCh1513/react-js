@@ -3,6 +3,7 @@ import styles from './MessageBox.module.css'
 
 import { useRef, useEffect } from "react";
 
+import PropTypes from 'prop-types'
 
 export function MessageBox({ currentAuthor, messageList }) {
 
@@ -10,7 +11,7 @@ export function MessageBox({ currentAuthor, messageList }) {
 
     useEffect(() => {
         console.log(divRef.scrollTop)
-        //divRef.current.scrollIntoView({ behavior: 'smooth' });
+        //divRef.current.scrollIntoView({ behavior: 'smooth' }); // пыталась скролл выставить в конец, есил будет переполнение сообщений в контейнере
         divRef.scrollTop = divRef.scrollHeight - divRef.clientHeight;
     }, []);
 
@@ -21,4 +22,9 @@ export function MessageBox({ currentAuthor, messageList }) {
             </div>
         </>
     )
+}
+
+MessageBox.propTypes = {
+    currentAuthor: PropTypes.string,
+    messageList: PropTypes.array // скорее всего тут нужно сделать .arrayOf<T>(...)
 }

@@ -1,4 +1,5 @@
 import styles from './Form.module.css'
+import Button from '@mui/material/Button'
 
 export function Form({ onAddNewPost }) {
 
@@ -10,8 +11,9 @@ export function Form({ onAddNewPost }) {
 
     return (
         <form className={styles.inputForm} onSubmit={handleSubmit}>
-            <button type="submit" className={styles.addBtn}>add</button>
+            <Button type="submit" variant='contained'>Enter</Button>
             <input name="newMessage" type="text" className={styles.newMessage} placeholder="new message"></input>
+
         </form>
     )
 }
