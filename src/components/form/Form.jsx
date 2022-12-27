@@ -6,7 +6,7 @@ export function Form({ onAddNewPost }) {
     const handleSubmit = (event) => {
         event.preventDefault()
         onAddNewPost(event.target.newMessage.value)
-        return false
+        event.target.newMessage.value = ''
     }
 
     return (
@@ -17,6 +17,7 @@ export function Form({ onAddNewPost }) {
                 name="newMessage"
                 placeholder="put your idea here..."
                 fullWidth
+                autoFocus
                 className={styles.newMessageBox}
             />
         </form>
