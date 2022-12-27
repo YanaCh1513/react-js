@@ -11,6 +11,11 @@
      padding-right: 1em; */
 }
 
+.newMessageBox {
+  background-color: rgba(0, 0, 20, 0.2);
+  padding: 0 10px;
+}
+
 .newMessage {
   font: inherit;
   border-style: none;

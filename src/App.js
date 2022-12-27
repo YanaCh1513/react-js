@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import { Form } from "./components/form/Form"
 import { MessageBox } from "./components/messageBox/MessageBox";
-
+import { ChatList } from "./components/chatList/ChatList";
 
 export function App() {
 
@@ -58,8 +58,13 @@ export function App() {
 
   return (
     <div className={styles.chat}>
-      <MessageBox currentAuthor={currentAuthor} messageList={messageList}></MessageBox>
-      <Form onAddNewPost={handleNewPost}></Form>
+      <div className={styles.chatList}>
+        <ChatList />
+      </div>
+      <div className={styles.chatPanel}>
+        <MessageBox currentAuthor={currentAuthor} messageList={messageList}></MessageBox>
+        <Form onAddNewPost={handleNewPost}></Form>
+      </div>
     </div>
   );
 }

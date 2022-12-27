@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="chat">
+        <div class="chatList">
+            <ul>
+                <li>GApps...</li>
+                <li>Mi Store customer service</li>
+                <li>Honor UI</li>
+                <li>Samuel service</li>
+                <li>Checklist</li>
+            </ul>
+        </div>
+        <div class="chatPanel">
+            <div class="messageBox">
+                <div class="post post__left">
+                    <div class="author">Eric</div>
+                    <div class="message">Hello</div>
+                </div>
+                <div class="post post__right">
+                    <div class="author">Me</div>
+                    <div class="message">Hello</div>
+                </div>
+                <div class="post post__left">
+                    <div class="author">Eric</div>
+                    <div class="message">Hello</div>
+                </div>
+                <div class="post post__right">
+                    <div class="author">Me</div>
+                    <div class="message">Hello</div>
+                </div>
+            </div>
+            <form class="inputForm">
+                <button type="submit" class="addBtn">add</button>
+                <input type="text" class="newMessage" placeholder="new message">
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .chat {
+            display: flex;
+            background-color: beige;
+            width: 80%;
+            height: 90vh;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .chatList {
+            min-width: 200px;
+            flex-basis: 20%;
+            background-color: rgba(0, 0, 20, 0.05);
+            margin: 0 15px;
+            margin-top: 22px;
+            box-sizing: content-box;
+        }
+
+        .chatPanel {
+            flex-grow: 1;
+
+            display: flex;
+            flex-direction: column;
+            height: inherit;
+        }
+
+        .messageBox {
+            background-color: aqua;
+            flex-grow: 1;
+        }
+
+        .post {
+            background-color: rgba(0, 0, 20, 0.05);
+            padding: 0.6em;
+            margin: 0.2em;
+            display: flex;
+        }
+
+        .post .author,
+        .post .message {
+            padding: 0.2em;
+        }
+
+        .post__left {
+            flex-direction: row;
+        }
+
+        .post__right {
+            flex-direction: row-reverse;
+        }
+
+        .author {
+            background-color: rgba(255, 127, 80, 1);
+            color: white;
+        }
+
+        .message {
+            background-color: rgba(0, 0, 20, 0.05);
+        }
+
+        .inputForm {
+            flex-basis: 2em;
+            background-color: aquamarine;
+
+            display: flex;
+            padding: 0.3em;
+        }
+
+        .addBtn {
+            /* padding-left: 1em;
+            padding-right: 1em; */
+        }
+
+        .newMessage {
+            border-style: none;
+            -webkit-appearance: none;
+            flex-grow: 1;
+            padding: 0.5em;
+            background-color: rgba(0, 0, 20, 0.2);
+        }
+    </style>
+</body>
+
+</html>
