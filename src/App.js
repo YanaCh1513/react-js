@@ -6,6 +6,22 @@ import { Form } from "./components/form/Form"
 import { MessageBox } from "./components/messageBox/MessageBox";
 import { ChatList } from "./components/chatList/ChatList";
 
+import { ButtonRender } from "./ui/buttonRender/ButtonRender";
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  RouterProvider,
+  createBrowserRouter
+} from "react-router-dom";
+
+
+import { HomePage } from "./pages/HomePage";
+import { ChatsPage } from "./pages/ChatsPage";
+import { ProfilePage } from "./pages/ProfilePage";
+
 export function App() {
 
   const [messageList, setMeesageList] = useState([
@@ -55,17 +71,44 @@ export function App() {
     }
   }, [messageList])
 
+  const mainPageRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomePage />
+    },
+    {
+      path: "/chats",
+      element: <ChatsPage />
+    },
+    {
+      path: "/profile",
+      element: <ProfilePage />
+    }
+  ])
 
   return (
-    <div className={styles.chat}>
-      <div className={styles.chatList}>
-        <ChatList />
-      </div>
-      <div className={styles.chatPanel}>
-        <MessageBox currentAuthor={currentAuthor} messageList={messageList}></MessageBox>
-        <Form onAddNewPost={handleNewPost}></Form>
-      </div>
-    </div>
+    <>
+      <nav>
+        <div className={styles.nav}>
+          <a className={styles.navItem} href={`chats`}>Chats</a>
+          <a className={styles.navItem} href={`profile`}>Profile</a>
+        </div>
+      </nav>
+
+      <RouterProvider router={mainPageRouter} />
+
+      {/* <div className={styles.chat}>
+          <div className={styles.chatList}>
+            <ChatList />
+          </div>
+          <div className={styles.chatPanel}>
+            <MessageBox currentAuthor={currentAuthor} messageList={messageList}></MessageBox>
+            <Form onAddNewPost={handleNewPost}></Form>
+          </div>
+        </div> */}
+
+
+    </>
   );
 }
 
