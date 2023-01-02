@@ -7,7 +7,7 @@ import { MessageBox } from "../components/messageBox/MessageBox";
 import { ChatList } from "../components/chatList/ChatList";
 
 import { ButtonRender } from "../ui/buttonRender/ButtonRender";
-import { BrowserRouter } from "react-router-dom";
+import { useParams, BrowserRouter } from "react-router-dom";
 
 export function ChatsPage() {
 
