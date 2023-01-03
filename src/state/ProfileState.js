@@ -1,4 +1,4 @@
 import React from "react"
 
-export const ProfileState = React.createContext({ checkboxValue: false })
+export const ProfileState = React.createContext({ cccValue: false })
 
