@@ -42,7 +42,7 @@ export function Header() {
                         {
                             navigate.map((item) =>
                                 <NavLink
-                                    id={item.id}
+                                    key={item.id}
                                     className={styles.navItem}
                                     style={({ isActive }) => ({ color: isActive ? 'green' : 'blue' })}
                                     to={item.to}

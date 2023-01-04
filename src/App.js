@@ -10,9 +10,9 @@ import {
 } from "react-router-dom";
 
 
-import { HomePage } from "./pages/HomePage";
-import { ChatsPage } from "./pages/ChatsPage";
-import { ProfilePage } from "./pages/ProfilePage";
+import { HomePage } from "./pages/HomePage/HomePage";
+import { ChatsPage } from "./pages/ChatsPage/ChatsPage";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Header } from "./components/header/Header";
 
 
