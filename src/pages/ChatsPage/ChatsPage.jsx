@@ -2,11 +2,11 @@ import styles from "./ChatsPage.module.css";
 
 import { useState, useEffect } from "react";
 
-import { Form } from "../components/form/Form"
-import { MessageBox } from "../components/messageBox/MessageBox";
-import { ChatList } from "../components/chatList/ChatList";
+import { Form } from "../../components/form/Form"
+import { MessageBox } from "../../components/messageBox/MessageBox";
+import { ChatList } from "../../components/chatList/ChatList";
 
-import { ButtonRender } from "../ui/buttonRender/ButtonRender";
+import { ButtonRender } from "../../ui/buttonRender/ButtonRender";
 import { useParams, BrowserRouter } from "react-router-dom";
 
 export function ChatsPage() {
