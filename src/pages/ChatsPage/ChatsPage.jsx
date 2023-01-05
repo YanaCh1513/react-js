@@ -1,6 +1,6 @@
 import styles from "./ChatsPage.module.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import { Form } from "../../components/form/Form"
 import { MessageBox } from "../../components/messageBox/MessageBox";
@@ -11,6 +11,11 @@ import { useParams, BrowserRouter } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux/es/exports';
 import messagesActions from '../../store/messages/actions'
+import { getUserName } from '../../store/profile/selectors';
+import { getMessages } from "../../store/messages/selectors";
+
+import { shallowEqual } from "react-redux";
+
 
 export function ChatsPage() {
 
@@ -19,10 +24,16 @@ export function ChatsPage() {
     const botThinkingTime = 1500 //ms
     const currentChatId = 1
 
-    const currentAuthor = useSelector((state) => state.profile.userName)
+    const currentAuthor = useSelector(getUserName)
     const chats = useSelector((state) => state.chats.chatList)
-    const allChatsMessages = useSelector((state) => state.messages.messageList)
-    const messages = allChatsMessages[currentChatId] || []
+    const allChatsMessages = useSelector((state) => state.messages.messageList, shallowEqual)
+    // (prev, next) => prev.length === next.length) здесь не сработало, чтобы добавить правльно нужно как то сразу селектор по текущему чату сделать.
+    //const messages = allChatsMessages[currentChatId] || []
+    const getSelectedChatMessages = useMemo(() => getMessages(currentChatId), [currentChatId])
+    const messages = useSelector(
+        getSelectedChatMessages,
+        (prev, next) => prev.length === next.length
+    )
 
     const dispatch = useDispatch()
 

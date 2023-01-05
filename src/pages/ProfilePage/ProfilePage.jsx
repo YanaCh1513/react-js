@@ -9,7 +9,7 @@ import { profileStore } from '../../store';
 import { HourglassEmptySharp } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux/es/exports';
 import actions from '../../store/profile/actions'
-
+import { getUserName, getShowName } from '../../store/profile/selectors';
 
 const TestTextComponent = (props) => {
     return (
@@ -24,7 +24,9 @@ const TestWithClasses = WithClasses(TestTextComponent)
 export function ProfilePage() {
     const [cbValue, setcbValue] = useState(true);
     const [dummyValue, setDummyValue] = useState('dummy');
-    const { userName, showName, name } = useSelector((state) => state.profile);
+    // const { userName, showName, name } = useSelector((state) => state.profile);
+    const userName = useSelector(getUserName)
+    const showName = useSelector(getShowName)
     const [nameValue, setNameValue] = useState(userName)
 
     // console.log('profile store: ')
@@ -55,16 +57,10 @@ export function ProfilePage() {
 
     const handleNameChange = useCallback((e) => {
         setNameValue(e.target.value)
-        // console.log(nameValue)
     }, [])
-
-    const profileInStore = useSelector((state) => state.profile)
 
     const setNameInStore = useCallback(() => {
         dispatch(actions.changeName(nameValue))
-        // console.log(nameValue)
-        // console.log(userName)
-        // console.log(profileInStore)
     }, [dispatch, nameValue])
 
     return (
