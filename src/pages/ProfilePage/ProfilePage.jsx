@@ -24,13 +24,11 @@ const TestWithClasses = WithClasses(TestTextComponent)
 export function ProfilePage() {
     const [cbValue, setcbValue] = useState(true);
     const [dummyValue, setDummyValue] = useState('dummy');
-    const userName = useSelector((state) => state.userName);
+    const { userName, showName, name } = useSelector((state) => state.profile);
     const [nameValue, setNameValue] = useState(userName)
 
-    console.log('state')
-    console.log(userName)
-
-
+    // console.log('profile store: ')
+    // console.log(useSelector((state) => state.profile))
 
     const dispatch = useDispatch()
 
@@ -50,9 +48,6 @@ export function ProfilePage() {
     }, [dispatch])
 
     // react-redux
-    // .useState()    --> useSelector()
-    // store.dispatch --> useDispatch()
-    const { showName, name } = useSelector((state) => state);
 
     const setShowNameCallback2 = useCallback((e) => {
         dispatch(actions.changeShowName())
@@ -63,10 +58,14 @@ export function ProfilePage() {
         // console.log(nameValue)
     }, [])
 
+    const profileInStore = useSelector((state) => state.profile)
+
     const setNameInStore = useCallback(() => {
         dispatch(actions.changeName(nameValue))
+        // console.log(nameValue)
+        // console.log(userName)
+        // console.log(profileInStore)
     }, [dispatch, nameValue])
-    const CHANGE_NAME = "PROFILE::CHANGE_NAME";
 
     return (
         <>

@@ -10,45 +10,48 @@ import { ButtonRender } from "../../ui/buttonRender/ButtonRender";
 import { useParams, BrowserRouter } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux/es/exports';
+import messagesActions from '../../store/messages/actions'
 
 export function ChatsPage() {
-
-    const [messageList, setMeesageList] = useState([
-        // { id: 0, author: 'Bot', text: "Hey, wat's up?" },
-        // { id: 1, author: 'You', text: 'So so...' },
-        // { id: 2, author: 'Bot', text: 'Need more details to proceed...' }
-    ])
 
     const botName = 'Bot'
     const botMessage = "Hello, I'm Bot! Let's talk!"
     const botThinkingTime = 1500 //ms
+    const currentChatId = 1
 
-    //const [currentAuthor] = useState('Me')
-    const currentAuthor = useSelector((state) => state.userName)
+    const currentAuthor = useSelector((state) => state.profile.userName)
+    const chats = useSelector((state) => state.chats.chatList)
+    const allChatsMessages = useSelector((state) => state.messages.messageList)
+    const messages = allChatsMessages[currentChatId] || []
 
-    const getNextId = () => {
-        if (messageList.length === 0) return 0
-        return messageList[messageList.length - 1]['id'] + 1
+    const dispatch = useDispatch()
+
+    const addMessage = (author, message) => {
+        dispatch(messagesActions.addMessage(currentChatId, { author, text: message }))
     }
 
     const handleNewPost = (newMessage) => {
-        const newPost = { id: getNextId(), author: currentAuthor, text: newMessage }
-        setMeesageList([...messageList, newPost])
+        addMessage(currentAuthor, newMessage)
     };
 
     const addBotMessage = (timerId) => {
         console.log('addBotMessage() interval: ' + timerId)
-        //    clearInterval(timerId)
+        clearInterval(timerId)
 
-        if (messageList.length === 0) setMeesageList([...messageList, { id: 0, author: botName, text: botMessage }])
-        else if (messageList[messageList.length - 1].author != botName) {
-            setMeesageList([...messageList, { id: getNextId(), author: botName, text: botMessage }])
+        if (messages.length === 0) {
+            addMessage(botName, botMessage)
+        }
+        else if (messages[messages.length - 1].author != botName) {
+            // если сюда не заходит перестает отрабатывать clearInterval(timerID) из useEffect() на уровень выше.
+            addMessage(botName, botMessage)
             // window.scrollTo(0, document.body.scrollHeight);
         }
     }
 
     useEffect(() => {
-        if (messageList.length > 0 && messageList[messageList.length - 1].author === botName) return;
+        if (messages.length > 0 && messages[messages.length - 1].author === botName)
+            return;
+
         const id = setInterval(() => {
             addBotMessage(id)
         }, botThinkingTime)
@@ -59,21 +62,17 @@ export function ChatsPage() {
             console.log('release interval: ' + id)
             clearInterval(id)
         }
-    }, [messageList])
+    }, [messages])
 
 
     return (
         <>
-            {/* как я поняла можно создавать специфические компоненты, которые позволяют добавлять свой рендер чайлд элемент
-       но которые могут передать в родителя, какую то часть своего внутреннего окружения (text ) в примре ниже */}
-            {/* <ButtonRender render={(text) => <b>This is my home, {text} </b>}/> */}
-
             <div className={styles.chat}>
                 <div className={styles.chatList}>
                     <ChatList />
                 </div>
                 <div className={styles.chatPanel}>
-                    <MessageBox currentAuthor={currentAuthor} messageList={messageList}></MessageBox>
+                    <MessageBox currentAuthor={currentAuthor} messageList={messages}></MessageBox>
                     <Form onAddNewPost={handleNewPost}></Form>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 
 export const ACTION_SWITCH_NAME = 'profile/switch_name'
-export const ACTION_CHANGE_NAME = "PROFILE::CHANGE_NAME";
+export const ACTION_CHANGE_NAME = 'profile/change_name'
 
 export const withPayLoad = (actionName, payload) => {
     return { type: actionName, payload: payload }
