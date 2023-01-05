@@ -9,6 +9,8 @@ import { ChatList } from "../../components/chatList/ChatList";
 import { ButtonRender } from "../../ui/buttonRender/ButtonRender";
 import { useParams, BrowserRouter } from "react-router-dom";
 
+import { useSelector, useDispatch } from 'react-redux/es/exports';
+
 export function ChatsPage() {
 
     const [messageList, setMeesageList] = useState([
@@ -21,7 +23,8 @@ export function ChatsPage() {
     const botMessage = "Hello, I'm Bot! Let's talk!"
     const botThinkingTime = 1500 //ms
 
-    const [currentAuthor] = useState('Me')
+    //const [currentAuthor] = useState('Me')
+    const currentAuthor = useSelector((state) => state.userName)
 
     const getNextId = () => {
         if (messageList.length === 0) return 0
