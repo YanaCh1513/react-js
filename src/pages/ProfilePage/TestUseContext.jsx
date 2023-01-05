@@ -7,7 +7,7 @@ export function ProfileContextComponent(props) {
     const contextValue = useContext(ProfileContext);
     return (
         <>
-            <Checkbox {...props} checked={contextValue.cccValue} />
+            <Checkbox disabled {...props} checked={contextValue.cccValue} />
         </>
     )
 }
