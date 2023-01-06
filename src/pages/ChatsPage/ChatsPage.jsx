@@ -1,10 +1,5 @@
-import styles from "./ChatsPage.module.css";
 
 import { useState, useEffect, useMemo } from "react";
-
-import { Form } from "../../components/form/Form"
-import { MessageBox } from "../../components/messageBox/MessageBox";
-import { ChatList } from "../../components/chatList/ChatList";
 
 import { ButtonRender } from "../../ui/buttonRender/ButtonRender";
 import { useParams, BrowserRouter } from "react-router-dom";
@@ -16,6 +11,7 @@ import { getMessages } from "../../store/messages/selectors";
 
 import { shallowEqual } from "react-redux";
 import { addBotMessageWithThunk } from "../../store/messages/actions";
+import { ChatsPageView } from "./ChatsPage.view";
 
 export function ChatsPage() {
 
@@ -85,19 +81,13 @@ export function ChatsPage() {
         }
     }, [messages])
 
-
     return (
         <>
-            <div className={styles.chat}>
-                <div className={styles.chatList}>
-                    <ChatList />
-                </div>
-                <div className={styles.chatPanel}>
-                    <MessageBox currentAuthor={currentAuthor} messageList={messages}></MessageBox>
-                    <Form onAddNewPost={handleNewPost}></Form>
-                </div>
-            </div>
+            <ChatsPageView
+                currentAuthor={currentAuthor}
+                messages={messages}
+                handleNewPost={handleNewPost}
+            />
         </>
-    );
+    )
 }
-
