@@ -6,7 +6,6 @@ import { useRef, useEffect } from "react";
 import PropTypes from 'prop-types'
 
 export function MessageBox({ currentAuthor, messageList }) {
-
     const divRef = useRef(null);
 
     useEffect(() => {

@@ -15,6 +15,8 @@ import { ChatsPage } from "./pages/ChatsPage/ChatsPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Header } from "./components/header/Header";
 
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 export function App() {
 
@@ -52,19 +54,21 @@ export function App() {
       {/* <Header /> */}
 
       {/* <BrowserRouter> */}
-      <Routes >
-        <Route path='/' element={<Header />}>
-          <Route index element={<HomePage />} />
-          <Route path='chats' element={<ChatsPage />}>
-            <Route index element={<ChatsPage />} />
-            <Route path=":chatId" element={<ChatsPage />} />
-          </Route>
-          <Route path='profile' element={<ProfilePage />} />
-        </Route>
-        <Route path="*" element={<h2>404 Page not Found</h2>}></Route>
-      </Routes>
-      {/* </BrowserRouter> */}
 
+      <Provider store={store}>
+        <Routes>
+          <Route path='/' element={<Header />}>
+            <Route index element={<HomePage />} />
+            <Route path='chats' element={<ChatsPage />}>
+              <Route index element={<ChatsPage />} />
+              <Route path=":chatId" element={<ChatsPage />} />
+            </Route>
+            <Route path='profile' element={<ProfilePage />} />
+          </Route>
+          <Route path="*" element={<h2>404 Page not Found</h2>}></Route>
+        </Routes>
+        {/* </BrowserRouter> */}
+      </Provider>
     </>
   );
 }
