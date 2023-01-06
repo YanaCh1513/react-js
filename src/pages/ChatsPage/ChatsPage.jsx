@@ -15,7 +15,7 @@ import { getUserName } from '../../store/profile/selectors';
 import { getMessages } from "../../store/messages/selectors";
 
 import { shallowEqual } from "react-redux";
-
+import { addBotMessageWithThunk } from "../../store/messages/actions";
 
 export function ChatsPage() {
 
@@ -41,8 +41,17 @@ export function ChatsPage() {
         dispatch(messagesActions.addMessage(currentChatId, { author, text: message }))
     }
 
+    // const onAddMessage = useCallback((message) => {
+    //     dispatch(addBotMessageWithThunk(chatId, message))
+    // }, [chatId, dispatch])
+
+    const addBotMessageToThunkMiddleware = (chatId, messageText) => {
+        dispatch(addBotMessageWithThunk(chatId, { author: botName, text: messageText }))
+    }
+
     const handleNewPost = (newMessage) => {
         addMessage(currentAuthor, newMessage)
+        addBotMessageToThunkMiddleware(currentChatId, "This message from Thunk middlaware!!!")
     };
 
     const addBotMessage = (timerId) => {
@@ -59,6 +68,7 @@ export function ChatsPage() {
         }
     }
 
+    // BOT GET ANSWER ATER COMPONENT WILL BE MOUNT
     useEffect(() => {
         if (messages.length > 0 && messages[messages.length - 1].author === botName)
             return;
