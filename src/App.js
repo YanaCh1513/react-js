@@ -17,6 +17,9 @@ import { Header } from "./components/header/Header";
 
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "./store/index"
+import { CircularProgress } from "@mui/material";
 
 export function App() {
 
@@ -56,18 +59,19 @@ export function App() {
       {/* <BrowserRouter> */}
 
       <Provider store={store}>
-        <Routes>
-          <Route path='/' element={<Header />}>
-            <Route index element={<HomePage />} />
-            <Route path='chats' element={<ChatsPage />}>
-              <Route index element={<ChatsPage />} />
-              <Route path=":chatId" element={<ChatsPage />} />
+        <PersistGate persistor={persistor} loading={<CircularProgress />}>
+          <Routes>
+            <Route path='/' element={<Header />}>
+              <Route index element={<HomePage />} />
+              <Route path='chats' element={<ChatsPage />}>
+                <Route index element={<ChatsPage />} />
+                <Route path=":chatId" element={<ChatsPage />} />
+              </Route>
+              <Route path='profile' element={<ProfilePage />} />
             </Route>
-            <Route path='profile' element={<ProfilePage />} />
-          </Route>
-          <Route path="*" element={<h2>404 Page not Found</h2>}></Route>
-        </Routes>
-        {/* </BrowserRouter> */}
+            <Route path="*" element={<h2>404 Page not Found</h2>}></Route>
+          </Routes>
+        </PersistGate>
       </Provider>
     </>
   );
