@@ -31,8 +31,27 @@ export function GistsPage() {
             .finally(() => setLoading(false))
     }
 
+    const requestGistsAsync = async () => {
+        setLoading(true)
+        setError(false)
+        try {
+            const response = await fetch(API_GISTS_PUBLIC)
+            if (!response.ok) {
+                throw new Error(`Request failed with status ${response.status}`)
+            }
+            const data = await response.json()
+            setGists(data)
+        } catch (err) {
+            setError(true)
+            console.warn(err)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+
     useEffect(() => {
-        requestGists()
+        requestGistsAsync()
     }, [])
 
     const renderGist = useCallback(
@@ -48,7 +67,7 @@ export function GistsPage() {
         return (
             <>
                 <h3>Error {error.message}</h3>
-                <Button onClick={requestGists}>Rretry</Button>
+                <Button onClick={requestGistsAsync}>Rretry</Button>
             </>
         )
     }
