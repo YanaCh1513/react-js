@@ -20,6 +20,7 @@ import { store } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./store/index"
 import { CircularProgress } from "@mui/material";
+import { GistsPage } from "./pages/GistsPage/GistsPage";
 
 export function App() {
 
@@ -68,6 +69,7 @@ export function App() {
                 <Route path=":chatId" element={<ChatsPage />} />
               </Route>
               <Route path='profile' element={<ProfilePage />} />
+              <Route path='gists' element={<GistsPage />} />
             </Route>
             <Route path="*" element={<h2>404 Page not Found</h2>}></Route>
           </Routes>

@@ -21,6 +21,11 @@ export function Header() {
             id: 3,
             name: 'Profile',
             to: '/profile'
+        },
+        {
+            id: 4,
+            name: 'Gists',
+            to: '/gists'
         }
     ]
 
