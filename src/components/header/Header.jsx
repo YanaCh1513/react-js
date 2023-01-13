@@ -1,8 +1,13 @@
 import {
     Link, NavLink, Outlet
 } from "react-router-dom";
+import * as selectors from "../../store/profile/selectors";
+
+import { useSelector, useDispatch } from 'react-redux/es/exports';
 
 import styles from "./Header.module.css";
+import { Button } from "@mui/material";
+import { logOut } from "../../services/firebase";
 
 
 export function Header() {
@@ -26,8 +31,31 @@ export function Header() {
             id: 4,
             name: 'Gists',
             to: '/gists'
+        },
+        {
+            id: 5,
+            name: 'Login',
+            to: '/login'
+        },
+        {
+            id: 6,
+            name: 'Sign Up',
+            to: '/signup'
         }
     ]
+
+    const isAuth = useSelector(selectors.selectIsAuth)
+    const userName = useSelector(selectors.getUserName)
+
+    const onLogoutClick = async (event) => {
+        try {
+            await logOut()
+            navigate('/login')
+        }
+        catch (err) {
+            console.error(err)
+        }
+    }
 
     return (
         <>
@@ -56,6 +84,8 @@ export function Header() {
                                 </NavLink>)
                         }
 
+                        {isAuth && (<Button onClick={onLogoutClick} variant='contained'>Logout</Button>)}
+                        {userName && (<div className={styles.userName}>{userName}</div>)}
                     </div>
                 </nav>
             </header>

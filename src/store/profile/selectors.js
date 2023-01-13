@@ -1,7 +1,3 @@
-export function getUserName(state) {
-    return state.profile.userName
-}
-
-export function getShowName(state) {
-    return state.profile.showName
-}
+export const getUserName = (state) => state.profile.userName
+export const getShowName = (state) => state.profile.showName
+export const selectIsAuth = (state) => state.profile.isAuth
