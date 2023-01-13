@@ -1,5 +1,6 @@
 //import firebase from "firebase"
 import { initializeApp } from "firebase/app";
+import { getDatabase, ref, get } from "firebase/database"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth"
 
 // Your web app's Firebase configuration
@@ -23,6 +24,32 @@ export const signUp = async (email, password) => await createUserWithEmailAndPas
 export const signIn = async (email, password) => await signInWithEmailAndPassword(auth, email, password)
 
 export const logOut = async () => await signOut(auth)
+
+export const db = getDatabase(app)
+
+export const getMessages = (chatId) => {
+
+}
+
+// export const addMessage = (userId, chatId, id, text) => {
+//     db.ref("messages")
+//         .child(chatId)
+//         .child(message.id)
+//         .set(message)
+
+//     set(ref(db, `messages/chats/${chatId}`), {
+//         id: id,
+//         userId: userId,
+//         text: text
+//     });
+// }
+
+// обернуть логику работы с базой здесь
+// export const dbMessages = db.ref('messages')
+
+// export const getDbMessages = (state) => {
+//     const messages
+// }
 
 // export const onStateChanged = async () => await onAuthStateChanged(auth)
 
