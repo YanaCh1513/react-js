@@ -1,4 +1,4 @@
-import { ADD_MESSAGE } from "./actions";
+import { ADD_MESSAGE, CHANGE_MESSAGES } from "./actions";
 
 const initialState = {
     // to be stored like this {[chatId]: [{id, text, author}]} 
@@ -23,6 +23,20 @@ export const messagesReducer = (state = initialState, action) => {
                 }
             }
         }
+
+        case CHANGE_MESSAGES: {
+            console.log('____messagesReducer: case CHANGE_MESSAGES: {')
+            console.log(action.payload)
+            state = {
+                ...state,
+                messageList: {
+                    ...state.messageList,
+                    [action.chatId]: action.messages
+                }
+            }
+            return state
+        }
+
         default:
             return state
     }
