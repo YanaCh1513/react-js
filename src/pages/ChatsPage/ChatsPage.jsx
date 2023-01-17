@@ -1,23 +1,13 @@
-import { ref, get, set, push, onValue } from "firebase/database"
-
-import { useState, useEffect, useMemo, useCallback } from "react";
-
-import { ButtonRender } from "../../ui/buttonRender/ButtonRender";
-import { useParams, BrowserRouter } from "react-router-dom";
+import { useEffect } from "react";
 
 import { useSelector, useDispatch } from 'react-redux/es/exports';
-import messagesActions, { initMssageTrackning, addMessageToFirebase } from '../../store/messages/actions'
+import { initMssageTrackning, addMessageToFirebase } from '../../store/messages/actions'
 import { getUserName } from '../../store/profile/selectors';
-import { getMessages } from "../../store/messages/selectors";
 
 import { shallowEqual } from "react-redux";
-import { addBotMessageWithThunk } from "../../store/messages/actions";
 import { ChatsPageView } from "./ChatsPage.view";
 
-import { db } from "../../services/firebase";
-
 export function ChatsPage() {
-
     const botName = 'Bot'
     const botMessage = "Hello, I'm Bot! Let's talk!"
     const botThinkingTime = 1500 //ms

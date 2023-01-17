@@ -1,8 +1,14 @@
+import {
+    Link, NavLink, Outlet
+} from "react-router-dom";
+
 import { useState } from 'react'
-import { Input, Link } from '@mui/material'
+import { Button, Input } from '@mui/material'
 import { signUp } from '../../services/firebase'
 
 import { useNavigate } from 'react-router-dom'
+
+import appStyles from "./../../App.module.css"
 
 export const Signup = () => {
     const [email, setEmail] = useState('')
@@ -36,9 +42,10 @@ export const Signup = () => {
 
 
     return (
-        <div>
+        <div className={appStyles.lazureContainer}>
+
             <form onSubmit={handleSubmit}>
-                <p>Fill in the form to login to your accoute</p>
+                <h3>Create new account</h3>
                 <div>
                     <Input
                         name="email"
@@ -59,14 +66,17 @@ export const Signup = () => {
                 </div>
                 <div>
                     {error && <p>{error}</p>}
-                    <button type="submit">Login</button>
+                    {/* <button type="submit">Login</button> */}
+
+                    <Button style={{ 'margin': '10px 5px' }} type="submit" variant='contained'>Create User</Button>
                 </div>
-                <hr />
                 <p>
-                    Already have an account? <Link to="/signup">Sign up</Link>
+                    Already have an account?
+                    <Link to="/login" >Login</Link>
+                    {/* <Link to="/login">Login</Link> */}
                 </p>
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
 
