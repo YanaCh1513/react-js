@@ -1,7 +1,12 @@
+import {
+    Link, NavLink, Outlet
+} from "react-router-dom";
+
 import { useState } from "react";
-import { Link } from "@mui/material";
+import { Button, Input } from '@mui/material'
 import { signIn } from "../../services/firebase";
 import { useNavigate } from "react-router-dom"
+import appStyles from "./../../App.module.css"
 
 export const Login = () => {
     const [email, setEmail] = useState("")
@@ -10,11 +15,11 @@ export const Login = () => {
 
     const navigate = useNavigate()
 
-    const onPassChange = (e) => {
+    const onChangePassword = (e) => {
         setPassword(e.target.value);
     };
 
-    const onEmailChange = (e) => {
+    const onChangeEmail = (e) => {
         setEmail(e.target.value);
     };
 
@@ -35,36 +40,37 @@ export const Login = () => {
     };
 
     return (
-        <div>
+        <div className={appStyles.lazureContainer}>
             <form onSubmit={handleSubmit}>
-                <p>Fill in the form below to login to your account.</p>
+                <h3>Login to Chats</h3>
                 <div>
-                    <input
-                        placeholder="Email"
+                    <Input
                         name="email"
-                        type="email"
-                        onChange={onEmailChange}
-                        value={email}
+                        placeholder="Email"
+                        fullWidth
+                        autoFocus
+                        onChange={onChangeEmail}
                     />
                 </div>
                 <div>
-                    <input
-                        placeholder="Password"
+                    <Input
                         name="password"
-                        onChange={onPassChange}
-                        value={password}
-                        type="password"
+                        placeholder="Password"
+                        fullWidth
+                        type='password'
+                        onChange={onChangePassword}
                     />
                 </div>
                 <div>
                     {error && <p>{error}</p>}
-                    <button type="submit">Login</button>
+                    {/* <button type="submit">Login</button> */}
+
+                    <Button style={{ 'margin': '10px 5px' }} type="submit" variant='contained'>Login</Button>
                 </div>
-                <hr />
                 <p>
-                    Don't have an account? <Link to="/signup">Sign up</Link>
+                    Create account <Link to="/signup">Sign up</Link>
                 </p>
-            </form>
+            </form >
         </div>
     );
 };

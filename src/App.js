@@ -93,34 +93,36 @@ export function App() {
       {/* <BrowserRouter>  on index.js */}
 
       {/* <Provider store={store}> */}
-      <PersistGate persistor={persistor} loading={<CircularProgress />}>
-        <Routes>
-          <Route path='/' element={<Header />}>
-            <Route index element={<HomePage />} />
-            <Route path='login' element={<Login />} />
-            <Route path='signup' element={<Signup />} />
-            {/* <Route path='chats' element={<ChatsPage />}>
+      <div className={styles.container}>
+        <PersistGate persistor={persistor} loading={<CircularProgress />}>
+          <Routes>
+            <Route path='/' element={<Header />}>
+              <Route index element={<HomePage />} />
+              <Route path='login' element={<Login />} />
+              <Route path='signup' element={<Signup />} />
+              {/* <Route path='chats' element={<ChatsPage />}>
               <Route index element={<ChatsPage />} />
               <Route path=":chatId" element={<ChatsPage />} />
             </Route> */}
 
-            <Route path='chats' element={<PrivateRoute />}>
-              <Route index element={<ChatsPage />} />
-              <Route path=":chatId" element={<ChatsPage />} />
-            </Route>
-            <Route path='profile' element={<PrivateRoute />} >
-              <Route index element={<ProfilePage />} />
-            </Route>
-            {/* <Route path='profile' element={<ProfilePage />} /> */}
-            {/* <PrivateRoute authenticated={isAuth} path="profile">
+              <Route path='chats' element={<PrivateRoute />}>
+                <Route index element={<ChatsPage />} />
+                <Route path=":chatId" element={<ChatsPage />} />
+              </Route>
+              <Route path='profile' element={<PrivateRoute />} >
+                <Route index element={<ProfilePage />} />
+              </Route>
+              {/* <Route path='profile' element={<ProfilePage />} /> */}
+              {/* <PrivateRoute authenticated={isAuth} path="profile">
               <ProfilePage />
             </PrivateRoute> */}
 
-            <Route path='gists' element={<GistsPage />} />
-          </Route>
-          <Route path="*" element={<h2>404 Page not Found</h2>}></Route>
-        </Routes>
-      </PersistGate>
+              <Route path='gists' element={<GistsPage />} />
+            </Route>
+            <Route path="*" element={<h2>404 Page not Found</h2>}></Route>
+          </Routes>
+        </PersistGate>
+      </div>
       {/* </Provider> */}
     </>
   );

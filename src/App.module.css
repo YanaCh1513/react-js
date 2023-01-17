@@ -1,3 +1,20 @@
+* {
+  font-size: 15px;
+}
+
+.lazureContainer {
+  background-color: #b9f0ff;
+  margin: 0 auto;
+  padding: 50px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
 .nav {
   display: flex;
   justify-content: center;
@@ -34,7 +51,6 @@
 }
 
 .messageBox {
-  background-color: aqua;
   flex-grow: 1;
 }
 
@@ -69,7 +85,6 @@
 
 .inputForm {
   flex-basis: 2em;
-  background-color: aquamarine;
   display: flex;
   padding: 0.3em;
 }

@@ -7,6 +7,8 @@ import { getAllGists } from "../../store/gists/actions"
 
 import { useSelector } from "react-redux/es/hooks/useSelector"
 
+import appStyles from './../../App.module.css'
+
 const API_GISTS_PUBLIC = 'https://api.github.com/gists/public'
 const API_GIST_PUBLIC = 'https://api.github.com/gists/{gistID}'
 
@@ -85,8 +87,10 @@ export function GistsPage() {
     }
     return (
         <>
-            <h2>Gists List</h2>
-            <ul>{gists.map(renderGist)}</ul>
+            <div className={appStyles.lazureContainer}>
+                <h2>Gists List</h2>
+                <ul>{gists.map(renderGist)}</ul>
+            </div>
         </>
     )
 }

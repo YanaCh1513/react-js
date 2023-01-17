@@ -1,5 +1,4 @@
 .messageBox {
-  background-color: aquamarine;
   flex-grow: 1;
   overflow: auto;
 }

@@ -1,9 +1,9 @@
 .chat {
+  border-radius: 10px;
+  padding: 15px;
   display: flex;
-  background-color: beige;
-  width: 80%;
+  background-color: #b9f0ff;
   height: 90vh;
-  margin: 0 auto;
   align-items: flex-start;
 }
 
@@ -11,8 +11,9 @@
   min-width: 200px;
   flex-basis: 20%;
   background-color: rgba(0, 0, 20, 0.05);
-  margin: 0 15px;
-  margin-top: 22px;
+  margin: 0 10px;
+  margin-top: 4px;
+  margin-right: 14px;
   box-sizing: content-box;
 }
 
@@ -24,7 +25,7 @@
 }
 
 .messageBox {
-  background-color: aqua;
+  background-color: azure;
   flex-grow: 1;
 }
 
